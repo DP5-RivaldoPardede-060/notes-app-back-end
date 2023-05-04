@@ -44,7 +44,7 @@ const getAllNotesHandler = () => ({
   },
 });
 
-const getNoteByIdHandler = (request, h) => {
+/* const getNoteByIdHandler = (request, h) => {
   const { id } = request.params;
 
   const note = notes.filter((n) => n.id === id)[0];
@@ -57,6 +57,37 @@ const getNoteByIdHandler = (request, h) => {
       },
     };
   }
+  const response = h.response({
+    status: 'fail',
+    message: 'catatan tidak ditemukan',
+  });
+  response.code(404);
+  return response;
+}; */
+
+const getNoteByIdHandler = (request, h) => {
+  const { id } = request.params;
+
+  if (!id || id === 'undefined') {
+    const response = h.response({
+      status: 'fail',
+      message: 'ID catatan tidak valid',
+    });
+    response.code(400);
+    return response;
+  }
+
+  const note = notes.filter((n) => n.id === id)[0];
+
+  if (note !== undefined) {
+    return {
+      status: 'success',
+      data: {
+        note,
+      },
+    };
+  }
+
   const response = h.response({
     status: 'fail',
     message: 'catatan tidak ditemukan',
