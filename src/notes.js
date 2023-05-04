@@ -1,11 +1,13 @@
+const { nanoid } = require('nanoid');
+
 const notes = [
   {
-    id: String,
-    title: String,
-    createdAt: String,
-    updatedAt: String,
-    tags: [String],
-    body: String,
+    id: nanoid(16),
+    title: 'Belajar Javascript',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    tags: ['javascript', 'programming'],
+    body: 'Belajar Javascript itu menyenangkan',
   },
 ];
 
