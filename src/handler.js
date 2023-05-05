@@ -115,7 +115,7 @@ const editNotByIdHandler = (request, h) => {
 
     const response = h.response({
       status: 'success',
-      message: 'Catatan berhasil diperbarahui',
+      message: 'Catatan berhasil diperbaharui',
     });
     response.code(200);
     return response;
